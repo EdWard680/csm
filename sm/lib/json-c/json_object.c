@@ -271,7 +271,7 @@ void json_object_object_add(struct json_object* this, const char *key,
 			    struct json_object *val)
 {
   lh_table_delete(this->o.c_object,  (char*) key);
-  lh_table_insert(this->o.c_object, strdup(key), val);
+  lh_table_insert(this->o.c_object, json_c_strndup(key, strlen(key)), val);
 }
 
 struct json_object* json_object_object_get(struct json_object* this, const char *key)
